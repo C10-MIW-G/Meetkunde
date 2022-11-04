@@ -11,18 +11,20 @@ public class MeetkundeLauncher {
 
     public static void main(String[] args) {
 
-        Cirkel mijnEersteCirkel = new Cirkel(1, 3, -2, "rood");
-        System.out.println(Cirkel.aantalCirkels);
-        Cirkel mijnTweedeCirkel = new Cirkel(1);
-        Cirkel mijnDerdeCirkel = new Cirkel();
-        System.out.println(Cirkel.aantalCirkels);
+        new Cirkel(-2, 1, 4, "fuchsia");
+        new Cirkel();
+        new Cirkel(5);
 
-        System.out.println("Omtrek: " + mijnEersteCirkel.geefOmtrek());
-        System.out.println("Oppervlak: " + mijnEersteCirkel.geefOppervlakte());
-        System.out.println(mijnEersteCirkel);
-
-        System.out.println(Cirkel.geefDefinitie());
-        System.out.println(mijnEersteCirkel.straal);
+        Cirkel[] mijnCirkelArray = new Cirkel[3];
+        mijnCirkelArray[0] = new Cirkel(3, 1, 4, "groen");
+        mijnCirkelArray[1] = new Cirkel();
+        mijnCirkelArray[2] = new Cirkel(6);
+        for (int arrayTeller = 0; arrayTeller < mijnCirkelArray.length;
+             arrayTeller++) {
+            System.out.println(mijnCirkelArray[arrayTeller].geefOmtrek());
+            System.out.println(mijnCirkelArray[arrayTeller].geefOppervlakte());
+            System.out.println();
+        }
 
     }
 

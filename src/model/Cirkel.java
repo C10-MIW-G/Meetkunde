@@ -6,16 +6,18 @@ package model;
  * Houdt de eigenschappen van een cirkel bij
  */
 public class Cirkel {
+    private static final double GRENSWAARDE_GROOT_FIGUUR = 100.0;
+    private static final int DEFAULT_MIDDELPUNT_X = 0;
+    private static final int DEFAULT_MIDDELPUNT_Y = 0;
+    private static final String DEFAULT_KLEUR = "Grijs";
+    private static final int DEFAULT_STRAAL = 1;
 
-    public static int aantalCirkels = 0;
-
-    public double straal;
-    public double middelpuntX;
-    public double middelpuntY;
-    public String kleur;
+    private double straal;
+    private double middelpuntX;
+    private double middelpuntY;
+    private String kleur;
 
     public Cirkel(double straal, double middelpuntX, double middelpuntY, String kleur) {
-        aantalCirkels++;
         this.straal = straal;
         this.middelpuntX = middelpuntX;
         this.middelpuntY = middelpuntY;
@@ -23,24 +25,23 @@ public class Cirkel {
     }
 
     public Cirkel(double straal) {
-        aantalCirkels++;
-        this.straal = straal;
-        this.middelpuntX = 0;
-        this.middelpuntY = 0;
-        this.kleur = "Grijs";
+        this(straal, DEFAULT_MIDDELPUNT_X, DEFAULT_MIDDELPUNT_Y, DEFAULT_KLEUR);
     }
 
     public Cirkel() {
-        aantalCirkels++;
-        // default constructor
-        this.straal = 1;
-        this.middelpuntX = 0;
-        this.middelpuntY = 0;
-        this.kleur = "Grijs";
+        this(DEFAULT_STRAAL);
     }
 
     public static String geefDefinitie() {
         return "Een cirkel is een verzameling punten, die allemaal dezelfde afstand tot een middelpunt hebben.";
+    }
+
+    public String vertelOverGrootte() {
+        if (geefOppervlakte() > GRENSWAARDE_GROOT_FIGUUR) {
+            return "Ik ben groot!!!";
+        } else {
+            return "Ik ben klein!!!";
+        }
     }
 
     public double geefOmtrek() {
@@ -49,5 +50,42 @@ public class Cirkel {
 
     public double geefOppervlakte() {
         return Math.PI * straal * straal;
+    }
+
+    public double getStraal() {
+        return straal;
+    }
+
+    public void setStraal(double straal) {
+        if (straal <= 0) {
+            System.out.println("De straal moet positief zijn, dat is een getal GROTER dan 0");
+            straal = 1;
+        } else {
+            this.straal = straal;
+        }
+    }
+
+    public double getMiddelpuntX() {
+        return middelpuntX;
+    }
+
+    public void setMiddelpuntX(double middelpuntX) {
+        this.middelpuntX = middelpuntX;
+    }
+
+    public double getMiddelpuntY() {
+        return middelpuntY;
+    }
+
+    public void setMiddelpuntY(double middelpuntY) {
+        this.middelpuntY = middelpuntY;
+    }
+
+    public String getKleur() {
+        return kleur;
+    }
+
+    public void setKleur(String kleur) {
+        this.kleur = kleur;
     }
 }
