@@ -6,7 +6,7 @@ package model;
  * Algemene eigenschappen van een figuur.
  */
 public class Figuur {
-    private static final double GRENSWAARDE_GROOT_FIGUUR = 100.0;
+    protected static final double GRENSWAARDE_GROOT_FIGUUR = 100.0;
     private static final String DEFAULT_KLEUR = "wit";
 
     private String kleur;

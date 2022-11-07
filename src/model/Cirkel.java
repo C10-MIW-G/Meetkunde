@@ -5,19 +5,17 @@ package model;
  * <p>
  * Houdt de eigenschappen van een cirkel bij
  */
-public class Cirkel {
-    private static final double GRENSWAARDE_GROOT_FIGUUR = 100.0;
-    private static final String DEFAULT_KLEUR = "Grijs";
+public class Cirkel extends Figuur {
+    private static final String DEFAULT_KLEUR = "grijs";
     private static final int DEFAULT_STRAAL = 1;
 
     private double straal;
     private Punt middelpunt;
-    private String kleur;
 
     public Cirkel(double straal, Punt middelpunt, String kleur) {
+        super(kleur);
         this.straal = straal;
         this.middelpunt = middelpunt;
-        this.kleur = kleur;
     }
 
     public Cirkel(double straal) {
@@ -32,18 +30,12 @@ public class Cirkel {
         return "Een cirkel is een verzameling punten, die allemaal dezelfde afstand tot een middelpunt hebben.";
     }
 
-    public String vertelOverGrootte() {
-        if (geefOppervlakte() > GRENSWAARDE_GROOT_FIGUUR) {
-            return "Ik ben groot!!!";
-        } else {
-            return "Ik ben klein!!!";
-        }
-    }
-
+    @Override
     public double geefOmtrek() {
         return 2 * Math.PI * straal;
     }
 
+    @Override
     public double geefOppervlakte() {
         return Math.PI * straal * straal;
     }
@@ -61,13 +53,6 @@ public class Cirkel {
         }
     }
 
-    public String getKleur() {
-        return kleur;
-    }
-
-    public void setKleur(String kleur) {
-        this.kleur = kleur;
-    }
 
     public Punt getMiddelpunt() {
         return middelpunt;

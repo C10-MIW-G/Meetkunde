@@ -12,6 +12,9 @@ import model.Rechthoek;
 public class MeetkundeLauncher {
 
     public static void main(String[] args) {
+        Cirkel zieJeWel = new Cirkel();
+        System.out.println(zieJeWel.vertelOverGrootte());
+
         System.out.println(Rechthoek.geefDefinitie());
         Rechthoek[] mijnRechthoekArray = new Rechthoek[3];
         mijnRechthoekArray[0] = new Rechthoek(4, 3, new Punt(2, 5), "blauw");
