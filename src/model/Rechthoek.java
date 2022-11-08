@@ -45,7 +45,7 @@ public class Rechthoek extends Figuur {
 
     @Override
     public String toString() {
-        return String.format("%s\nLengte: %.2f\nBreedte%.2f\nHoekpunt: %s",
+        return String.format("%s\nLengte: %.2f\nBreedte: %.2f\nHoekpunt: %s",
                 super.toString(), lengte, breedte, hoekpuntLinksBoven);
     }
 
