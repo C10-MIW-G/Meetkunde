@@ -12,6 +12,12 @@ import java.util.ArrayList;
 public class MeetkundeLauncher {
 
     public static void main(String[] args) {
+
+        int integer1 = 3;
+        Integer integer2 = Integer.valueOf(3);
+        Integer integer3 = 3;
+        int integer4 = Integer.valueOf(3);
+
         Oppervlak oppervlak2 = new Oppervlak(10, 7);
         oppervlak2.voegFiguurToe(new Rechthoek(4, 3, new Punt(0, 7), "rood"));
         oppervlak2.voegFiguurToe(new Cirkel(4, new Punt(1.5, 1.5), "geel"));
