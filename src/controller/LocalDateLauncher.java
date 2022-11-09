@@ -12,6 +12,10 @@ public class LocalDateLauncher {
 
     public static void main(String[] args) {
 
+        LocalDateTime nu = LocalDateTime.now();
+        System.out.printf("%s-%s-%s\n\n", nu.getYear(), nu.getMonthValue(), nu.getDayOfMonth());
+        System.out.println(nu);
+
         LocalDate vandaag = LocalDate.now();
         System.out.println(vandaag);
 

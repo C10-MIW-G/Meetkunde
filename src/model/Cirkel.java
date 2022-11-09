@@ -62,4 +62,9 @@ public class Cirkel extends Figuur {
     public Punt getMiddelpunt() {
         return middelpunt;
     }
+
+    @Override
+    public boolean pastInOppervlak(double lengte, double breedte) {
+        return straal <= (breedte / 2) && straal <= (lengte / 2);
+    }
 }

@@ -60,4 +60,9 @@ public class Rechthoek extends Figuur {
     public double getBreedte() {
         return breedte;
     }
+
+    @Override
+    public boolean pastInOppervlak(double lengte, double breedte) {
+        return this.lengte <= lengte && this.breedte <= breedte;
+    }
 }
