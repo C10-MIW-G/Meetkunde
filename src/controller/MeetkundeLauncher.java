@@ -2,8 +2,10 @@ package controller;
 
 import model.*;
 
+import javax.swing.plaf.basic.BasicEditorPaneUI;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.InputMismatchException;
@@ -19,8 +21,8 @@ public class MeetkundeLauncher {
     public static void main(String[] args) {
         File rechthoekenBestand = new File("resources/Rechthoek.csv");
         ArrayList<Rechthoek> rechthoeken = new ArrayList<>();
-        try {
-            Scanner invoerBestand = new Scanner(rechthoekenBestand);
+        try (Scanner invoerBestand = new Scanner(rechthoekenBestand)) {
+
             while (invoerBestand.hasNextLine()) {
                 String[] gesplitsteRegel = invoerBestand.nextLine().split(",");
 
@@ -35,14 +37,21 @@ public class MeetkundeLauncher {
 
                 rechthoeken.add(new Rechthoek(lengte, breedte, hoekpunt, kleur));
             }
-            invoerBestand.close();
         } catch (FileNotFoundException fileNotFoundException) {
             System.out.println("Het lukte niet om het bestand te openen");
         }
 
-        for (Rechthoek rechthoek : rechthoeken) {
-            System.out.println(rechthoek);
-            System.out.println();
+        File uitvoerBestand = new File("resources/Rechthoeken.txt");
+
+        try (PrintWriter printWriter = new PrintWriter(uitvoerBestand)) {
+            printWriter.println("Dit zijn mijn rechthoeken:\n");
+            for (Rechthoek rechthoek : rechthoeken) {
+                printWriter.println(rechthoek);
+                printWriter.println();
+            }
+        } catch (FileNotFoundException e) {
+            System.out.println("Het is niet gelukt het bestand aan te maken");
+            System.out.println(e.getMessage());
         }
     }
 
