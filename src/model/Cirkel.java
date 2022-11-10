@@ -14,7 +14,7 @@ public class Cirkel extends Figuur {
 
     public Cirkel(double straal, Punt middelpunt, String kleur) {
         super(kleur);
-        this.straal = straal;
+        setStraal(straal);
         this.middelpunt = middelpunt;
     }
 
@@ -51,8 +51,7 @@ public class Cirkel extends Figuur {
 
     public void setStraal(double straal) {
         if (straal <= 0) {
-            System.out.println("De straal moet positief zijn, dat is een getal GROTER dan 0");
-            straal = 1;
+            throw new IllegalArgumentException("De straal moet positief zijn.");
         } else {
             this.straal = straal;
         }
