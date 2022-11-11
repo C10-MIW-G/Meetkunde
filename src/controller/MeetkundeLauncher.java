@@ -1,5 +1,6 @@
 package controller;
 
+import database.CirkelDAO;
 import database.DBaccess;
 import model.*;
 
@@ -24,27 +25,11 @@ public class MeetkundeLauncher {
 
     public static void main(String[] args) {
         DBaccess dBaccess = new DBaccess("figuren", "userFiguren", "userFigurenPW");
+        CirkelDAO cirkelDAO = new CirkelDAO(dBaccess);
+
         dBaccess.openConnection();
-
-        if (dBaccess.getConnection() != null) {
-            String sql = "SELECT * FROM Punt";
-
-            try {
-                PreparedStatement preparedStatement = dBaccess.getConnection().prepareStatement(sql);
-                ResultSet resultSet = preparedStatement.executeQuery();
-                while (resultSet.next()) {
-                    double xCoordinaat = resultSet.getDouble("xcoordinaat");
-                    double yCoordinaat = resultSet.getDouble("ycoordinaat");
-                    Punt punt = new Punt(xCoordinaat, yCoordinaat);
-                    System.out.println(punt);
-                }
-            } catch (SQLException sqlException) {
-                System.out.println("SQL foutmelding: " + sqlException.getMessage());
-            } finally {
-                dBaccess.closeConnection();
-            }
-        }
-
+        cirkelDAO.slaCirkelOp(new Cirkel());
+        dBaccess.closeConnection();
     }
 
     public static void toonInformatie(Figuur figuur) {
